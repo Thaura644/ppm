@@ -1,0 +1,39 @@
+<odoo>
+    <!-- Define the Project Stages -->
+    <record id="stage_initiation" model="project.task.type">
+        <field name="name">Initiation</field>
+        <field name="sequence">1</field>
+        <field name="project_ids" eval="[(4, ref('project.project_project'))]"/>
+    </record>
+
+    <record id="stage_planning" model="project.task.type">
+        <field name="name">Planning</field>
+        <field name="sequence">2</field>
+        <field name="project_ids" eval="[(4, ref('project.project_project'))]"/>
+    </record>
+
+    <record id="stage_execution" model="project.task.type">
+        <field name="name">Execution</field>
+        <field name="sequence">3</field>
+        <field name="project_ids" eval="[(4, ref('project.project_project'))]"/>
+    </record>
+
+    <record id="stage_monitoring" model="project.task.type">
+        <field name="name">Monitoring</field>
+        <field name="sequence">4</field>
+        <field name="project_ids" eval="[(4, ref('project.project_project'))]"/>
+    </record>
+
+    <record id="stage_completed" model="project.task.type">
+        <field name="name">Completed</field>
+        <field name="sequence">5</field>
+        <field name="fold">True</field> <!-- Fold completed stage -->
+        <field name="project_ids" eval="[(4, ref('project.project_project'))]"/>
+    </record>
+
+    <record id="stage_support" model="project.task.type">
+        <field name="name">Support</field>
+        <field name="sequence">6</field>
+        <field name="project_ids" eval="[(4, ref('project.project_project'))]"/>
+    </record>
+</odoo>

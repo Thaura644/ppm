@@ -1,0 +1,68 @@
+<odoo>
+    <record id="view_project_planning_requirements" model="ir.ui.view">
+        <field name="name">project.project.planning.requirements</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Planning Requirements">
+                    <group>
+                        <field name="name"/>
+                        <field name="partner_id"/>
+                        <field name="company_id"/>
+                    </group>
+                    <group>
+                        <field name="acquisition_required"/>
+                        <field name="survey_required"/>
+                        <field name="surveyor_assigned"/>
+                        <field name="design_approved"/>
+                        <field name="wayleave_required"/>
+                        <field name="permit_granted"/>
+                        <field name="crf_approved"/>
+                    </group>
+                </page>
+                
+                <!-- New page for Milestones -->
+                <page string="Milestones">
+                    <field name="milestone_ids" context="{'default_project_id': id}">
+                        <tree editable="bottom">
+                            <field name="name"/>
+                            <field name="state"/>
+                        </tree>
+                        <form>
+                            <group>
+                                <field name="name"/>
+                                <field name="state"/>
+                                <field name="deadline"/>
+                            </group>
+                        </form>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+
+
+
+
+
+
+    <record id="view_project_milestone_tree_inherit" model="ir.ui.view">
+        <field name="name">project.milestone.tree.inherit</field>
+        <field name="model">project.milestone</field>
+        <field name="inherit_id" ref="project.project_milestone_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="state"/>
+            </field>
+        </field>
+    </record>
+
+
+
+
+
+
+
+</odoo>

@@ -1,0 +1,46 @@
+<odoo>
+    <template id="client_request_report_template">
+        <t t-name="project_planning_management.client_request_report">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <main>
+                        <h2>Client Request Report</h2>
+                        <h3>General Information</h3>
+                        <table class="table table-sm">
+                            <t t-foreach="docs" t-as="doc">
+                                <tr>
+                                    <td><strong>Request Reference:</strong></td>
+                                    <td><span t-field="doc.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Client:</strong></td>
+                                    <td><span t-field="doc.client_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Company:</strong></td>
+                                    <td><span t-field="doc.company_id.name"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Email:</strong></td>
+                                    <td><span t-field="doc.email_from"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Request Date:</strong></td>
+                                    <td><span t-field="doc.request_date"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Description:</strong></td>
+                                    <td><span t-field="doc.description"/></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Status:</strong></td>
+                                    <td><span t-field="doc.state"/></td>
+                                </tr>
+                            </t>
+                        </table>
+                    </main>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

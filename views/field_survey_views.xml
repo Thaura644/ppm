@@ -1,0 +1,164 @@
+<odoo>
+    <!-- Form View for Field Survey -->
+    <record id="view_field_survey_form" model="ir.ui.view">
+        <field name="name">field.survey.form</field>
+        <field name="model">project_planning.field_survey</field>
+        <field name="arch" type="xml">
+            <form string="Field Survey Report">
+                <sheet>
+                    <!-- Statusbar and Action Buttons -->
+                    <header>
+                        <field name="status" widget="statusbar" statusbar_visible="pending,in_progress,completed"/>
+                        <button string="In Progress" type="object" name="action_in_progress"
+                                class="btn-primary" invisible="status != 'pending'"/>
+                        <button string="Complete" type="object" name="action_completed"
+                                class="btn-success" invisible="status != 'in_progress'"/>
+                        <button string="Generate PDF Report" type="object" name="generate_pdf_report" class="btn-primary"/>
+                        <!-- <button string="Preview PDF Report" type="object" name="action_preview_pdf_report" class="btn-secondary"/>
+                        <button string="Download Report" type="object" name="action_download_report" class="btn-success"/> -->
+                        <!-- <group> -->
+                    <!-- <field name="report_file" /> -->
+                    <!-- <field name="report_filename" /> Ensure this field is included -->
+                <!-- </group>
+                <div class="o_form_buttons_edit">
+                    <button type="button" class="btn-secondary" 
+                            name="action_download_report" 
+                            context="{'download_url': '/web/content?model=project_planning.client_request&amp;id=' + str(id) + '&amp;field=report_file&amp;download=true&amp;filename=' + str(report_filename)}">
+                        Download Report
+                    </button>
+                </div> -->
+                    </header>
+
+                    <!-- Subtabs (Notebook) -->  
+                    <notebook>
+                        <!-- General Information Tab -->
+                        <page string="General Information">
+                            <group>
+                                <field name="name" string="Survey Report Code"/>
+                                <field name="survey_date" string="Date of Survey"/>
+                                <field name="done_by" string="Done By"/>
+                            </group>
+                            <group>
+                                <field name="site_name" string="Site Name"/>
+                                <field name="project_id" string="Project"/>
+                                <field name="location" string="Site Location"/>
+                                <field name="street"/>
+                                <field name="building_floor_room"/>
+                            </group>
+                        </page>
+
+                        <!-- Survey Details Tab -->
+                        <page string="Survey Details">
+                            <group>
+                                <field name="space_in_rack" string="Space in Existing Rack"/>
+                                <field name="rack_required" string="Rack Required" widget="boolean_toggle"/>
+                                <field name="rack_size" string="Rack Size (If required)"/>
+                            </group>
+                            <group string="Fiber Cabinets">
+                                <field name="cabinet_288_fiber" string="288 Fiber Cabinet"/>
+                                <field name="cabinet_144_fiber" string="144 Fiber Cabinet"/>
+                                <field name="cabinet_576_fiber" string="576 Fiber Cabinet"/>
+                            </group>
+                            <group string="Equipment and Materials">
+                                <field name="type_of_connection" string="Type of Connection (Internet/P2P/GPON)"/>
+                                <field name="existing_equipment" string="Existing Equipment"/>
+                                <field name="equipment_atb_2_port" string="2 Port ATB"/>
+                                <field name="onus"/>
+                                <field name="fats_48_port" string="FATS 48 Port"/>
+                                <field name="fats_24_port" string="FATS 24 Port"/>
+                                <field name="fats_12_port" string="FATS 12 Port"/>
+                                <field name="splitter" string="Splitter (1:64)"/>
+                                <field name="trunking"/>
+                            </group>
+                        </page>
+
+                        <!-- Underground Materials Tab -->
+                        <page string="Underground Materials">
+                            <group>
+                                <field name="fiber_optic_144_core" string="Fiber Optic Cable (144 Core)"/>
+                                <field name="fiber_optic_96_core" string="Fiber Optic Cable (96 Core)"/>
+                                <field name="fiber_optic_48_core" string="Fiber Optic Cable (48 Core)"/>
+                                <field name="fiber_optic_24_core" string="Fiber Optic Cable (24 Core)"/>
+                                <field name="fiber_optic_12_core" string="Fiber Optic Cable (12 Core)"/>
+                                <field name="fiber_optic_2_core_drop" string="2 Core Drop Cable"/>
+                            </group>
+                            <group>
+                                <field name="manholes_masonry" string="Manholes (Masonry)"/>
+                                <field name="manholes_precast" string="Manholes (Precast)"/>
+                                <field name="hdpe_32mm" string="HDPE 32 mm"/>
+                                <field name="hdpe_microduct" string="HDPE Micro Duct"/>
+                                <field name="warning_tape"/>
+                                <field name="pvc_110mm" string="PVC (110 mm)"/>
+                            </group>
+                        </page>
+
+                        <!-- Overhead Materials Tab -->
+                        <page string="Overhead Materials">
+                            <group>
+                                <field name="adss_foc_144_core" string="ADSS FOC (144 Core)"/>
+                                <field name="adss_foc_96_core" string="ADSS FOC (96 Core)"/>
+                                <field name="adss_foc_48_core" string="ADSS FOC (48 Core)"/>
+                                <field name="adss_foc_24_core" string="ADSS FOC (24 Core)"/>
+                                <field name="adss_foc_12_core" string="ADSS FOC (12 Core)"/>
+                                <field name="adss_foc_2_core_drop" string="ADSS FOC 2 Core Drop Cable"/>
+                            </group>
+                            <group>
+                                <field name="closures_144_port" string="Closures (144 Port)"/>
+                                <field name="closures_96_port" string="Closures (96 Port)"/>
+                                <field name="closures_48_port" string="Closures (48 Port)"/>
+                                <field name="closures_24_port" string="Closures (24 Port)"/>
+                                <field name="closures_12_port" string="Closures (12 Port)"/>
+                            </group>
+                        </page>
+
+                        <!-- Civil Works Tab -->
+                        <page string="Civil Works">
+                            <group>
+                                <field name="road_crossing"/>
+                                <field name="trenching"/>
+                                <field name="tarmac_slabs"/>
+                                <field name="cabro"/>
+                                <field name="cable_pulling"/>
+                            </group>
+                            <group>
+                                <field name="cabinet_mounting"/>
+                                <field name="concrete_cutting"/>
+                                <field name="masonry_manholes"/>
+                                <field name="laying_hdpes"/>
+                                <field name="precast_manholes"/>
+                            </group>
+                        </page>
+
+                        <!-- Remarks Tab -->
+                        <page string="Remarks">
+                            <group>
+                                <field name="remarks"/>
+                                <field name="document_ids" widget="many2many_binary"/>
+                            </group>
+                        </page>
+                    </notebook>
+
+                    <!-- Chatter Integration -->
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View for Field Survey -->
+    <record id="view_field_survey_tree" model="ir.ui.view">
+        <field name="name">field.survey.tree</field>
+        <field name="model">project_planning.field_survey</field>
+        <field name="arch" type="xml">
+            <tree string="Field Surveys" decoration-info="status == 'completed'" decoration-warning="status == 'in_progress'">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="survey_date"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

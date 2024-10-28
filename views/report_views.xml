@@ -1,0 +1,73 @@
+<odoo>
+    <!-- Form View for Report -->
+    <record id="view_report_form" model="ir.ui.view">
+        <field name="name">report.form</field>
+        <field name="model">project_planning.report</field>
+        <field name="arch" type="xml">
+            <form string="Report">
+                <sheet>
+                    <group>
+                        <field name="name" placeholder="Enter report name..."/>
+                        <field name="report_type"/>
+                        <field name="report_data" widget="text" placeholder="Report data will be generated here..."/>
+                    <field name="report_file" invisible="1"/>
+                    <field name="report_filename" invisible="1"/>
+                </group>
+                <button type="object" name="action_preview_pdf_report" class="btn-primary" string="Preview PDF Report"/>
+               <button type="object" name="generate_pdf_report" class="btn-primary" string="Generate PDF Report"/>
+<!-- <button type="object" name="generate_xlsx_report" class="btn-primary" string="Generate Excel Report"/>
+<button type="object" name="generate_csv_report" class="btn-primary" string="Generate CSV Report"/> -->
+
+                 <!-- <group> -->
+                    <!-- <field name="report_file" /> -->
+                    <!-- <field name="report_filename" /> Ensure this field is included -->
+                <!-- </group>
+                <div class="o_form_buttons_edit">
+                    <button type="button" class="btn-secondary" 
+                            name="action_download_report" 
+                            context="{'download_url': '/web/content?model=project_planning.client_request&amp;id=' + str(id) + '&amp;field=report_file&amp;download=true&amp;filename=' + str(report_filename)}">
+                        Download Report
+                    </button>
+                </div> -->
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+       <!-- Action to open report in preview mode -->
+    <record id="action_report_preview" model="ir.actions.act_url">
+        <field name="name">Preview Report</field>
+        <field name="url">/web/content?model=project_planning.report&amp;id=${object.id}&amp;field=report_file&amp;download=false&amp;filename=${object.report_filename}</field>
+        <field name="target">new</field>
+    </record>
+
+     <record id="action_report_download" model="ir.actions.act_url">
+        <field name="name">Download Report</field>
+        <field name="url">/web/content?model=project_planning.field_survey&amp;id=${object.id}&amp;field=report_file&amp;download=true&amp;filename=${object.report_filename}</field>
+        <field name="target">self</field>
+    </record>
+
+    <!-- Tree View for Report -->
+    <record id="view_report_tree" model="ir.ui.view">
+        <field name="name">report.tree</field>
+        <field name="model">project_planning.report</field>
+        <field name="arch" type="xml">
+            <tree string="Reports">
+                <field name="name"/>
+                <field name="report_type"/>
+                <field name="created_at"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_report" model="ir.actions.act_window">
+        <field name="name">Reports</field>
+        <field name="res_model">project_planning.report</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>
+                Create and manage reports for your project planning models.
+            </p>
+        </field>
+    </record>
+</odoo>

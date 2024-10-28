@@ -1,0 +1,106 @@
+<odoo>
+    <!-- Report Definitions -->
+    <report
+        id="client_request_report_action"
+        model="project_planning.client_request"
+        string="Client Request Report"
+        report_type="qweb-pdf"
+        name="project_planning_management.client_request_report_template"
+        file="project_planning_management.client_request_report_template"
+        print_report_name="'Client_Request_Report_' + object.name"
+    />
+    <report
+        id="field_survey_report_action"
+        model="project_planning.field_survey"
+        string="Field Survey Report"
+        report_type="qweb-pdf"
+        name="project_planning_management.field_survey_report"
+        file="project_planning_management.field_survey_report"
+        print_report_name="'Field_Survey_Report_' + object.name"
+    />
+
+    <!-- Action Definitions for Client Request Report -->
+    <record id="client_request_report_action" model="ir.actions.report">
+        <field name="name">Client Request Report</field>
+        <field name="model">project_planning.client_request</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">project_planning_management.client_request_report_template</field>
+        <field name="report_file">project_planning_management.client_request_report_template</field>
+    </record>
+
+    <!-- Action Definitions for Field Survey Report -->
+    <record id="action_field_survey_report" model="ir.actions.report">
+        <field name="name">Field Survey Report</field>
+        <field name="model">project_planning.report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">project_planning_management.field_survey_report</field>
+        <field name="report_file">project_planning_management.field_survey_report</field>
+    </record>
+
+    <!-- Action Definitions for each Model -->
+    <record id="generate_report" model="ir.actions.act_window">
+        <field name="name">Generate Report</field>
+        <field name="res_model">project_planning.report</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_report_tree"/>
+    </record>
+
+    <record id="action_client_request_tree" model="ir.actions.act_window">
+        <field name="name">Client Requests</field>
+        <field name="res_model">project_planning.client_request</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_client_request_tree"/>
+    </record>
+
+    <record id="action_desktop_planning_tree" model="ir.actions.act_window">
+        <field name="name">Desktop Planning</field>
+        <field name="res_model">project_planning.desktop_planning</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_desktop_planning_tree"/>
+    </record>
+
+    <record id="action_acquisition_tree" model="ir.actions.act_window">
+        <field name="name">Acquisitions</field>
+        <field name="res_model">project_planning.acquisition</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_acquisition_tree"/>
+    </record>
+
+    <record id="action_desktop_design_tree" model="ir.actions.act_window">
+        <field name="name">Desktop Designs</field>
+        <field name="res_model">project_planning.desktop_design</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_desktop_design_tree"/>
+    </record>
+
+    <record id="action_field_survey_tree" model="ir.actions.act_window">
+        <field name="name">Field Surveys</field>
+        <field name="res_model">project_planning.field_survey</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_field_survey_tree"/>
+    </record>
+
+    <record id="action_wayleave_application_tree" model="ir.actions.act_window">
+        <field name="name">Wayleave Applications</field>
+        <field name="res_model">project_planning.wayleave_application</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_wayleave_application_tree"/>
+    </record>
+
+    <!-- Menu Item Definitions -->
+    <menuitem id="menu_reports" name="Reports" sequence="5"/>
+
+    <menuitem 
+        id="menu_client_request_report" 
+        name="Client Request Report" 
+        parent="menu_reports" 
+        action="client_request_report_action" 
+        sequence="10"/>
+
+    <menuitem 
+        id="menu_field_survey_report" 
+        name="Field Survey Report" 
+        parent="menu_reports" 
+        action="action_field_survey_report" 
+        sequence="20"/>
+</odoo>

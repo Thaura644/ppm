@@ -1,0 +1,6 @@
+<odoo>
+    <record id="group_acquisition_team" model="res.groups">
+        <field name="name">Acquisition Team</field>
+        <field name="category_id" ref="base.module_category_project"/>
+    </record>
+</odoo>

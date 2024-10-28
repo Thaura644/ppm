@@ -1,0 +1,72 @@
+<odoo>
+    <record id="view_acquisition_form" model="ir.ui.view">
+        <field name="name">acquisition.form</field>
+        <field name="model">project_planning.acquisition</field>
+        <field name="arch" type="xml">
+            <form string="Acquisition">
+                <sheet>
+                    <header>
+                        <field name="status" widget="statusbar" statusbar_visible="identification,due_diligence,negotiation,documentation,completed"/>
+                        <button string="Due Diligence" type="object" name="action_due_diligence" class="btn-primary"/>
+                        <button string="Negotiation" type="object" name="action_negotiation" class="btn-primary"/>
+                        <button string="Documentation" type="object" name="action_documentation" class="btn-primary"/>
+                        <button string="Complete" type="object" name="action_completed" class="btn-success"/>
+                         
+                        <button string="Generate Report" type="object" name="generate_report" class="btn-secondary"/>
+                        <group>
+                    <field name="report_file" />
+                    <field name="report_filename" /> <!-- Ensure this field is included -->
+                </group>
+                <div class="o_form_buttons_edit">
+                    <button type="button" class="btn-secondary" 
+                            name="action_download_report" 
+                            context="{'download_url': '/web/content?model=project_planning.client_request&amp;id=' + str(id) + '&amp;field=report_file&amp;download=true&amp;filename=' + str(report_filename)}">
+                        Download Report
+                    </button>
+                </div>
+                    
+                    </header>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="project_id"/>
+                            <field name="land_parcel"/>
+                        </group>
+                        <group>
+                            <field name="owner_name"/>
+                            <field name="owner_contact"/>
+                            <field name="status"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="document_ids" widget="many2many_binary"/>
+                    </group>
+                    <group>
+                        <field name="budget"/>
+                        <field name="expenses"/>
+                        <field name="balance"/>
+                    </group>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_acquisition_tree" model="ir.ui.view">
+        <field name="name">acquisition.tree</field>
+        <field name="model">project_planning.acquisition</field>
+        <field name="arch" type="xml">
+            <tree string="Acquisitions">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="land_parcel"/>
+                <field name="owner_name"/>
+                <field name="owner_contact"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,10 @@
+<odoo>
+    <record id="seq_project_planning_client_request" model="ir.sequence">
+        <field name="name">Client Request</field>
+        <field name="code">project_planning.client_request</field>
+        <field name="prefix">CREQ/</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+        <field name="implementation">no_gap</field>
+    </record>
+</odoo>

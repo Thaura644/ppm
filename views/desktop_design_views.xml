@@ -1,0 +1,44 @@
+<odoo>
+    <record id="view_desktop_design_form" model="ir.ui.view">
+        <field name="name">desktop.design.form</field>
+        <field name="model">project_planning.desktop_design</field>
+        <field name="arch" type="xml">
+            <form string="Desktop Design">
+                <sheet>
+                    <header>
+                        <field name="status" widget="statusbar" statusbar_visible="draft,reviewed,approved,completed"/>
+                        <button string="Review" type="object" name="action_reviewed" class="btn-primary"/>
+                        <button string="Approve" type="object" name="action_approved" class="btn-success"/>
+                        <button string="Complete" type="object" name="action_completed" class="btn-success"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="project_id"/>
+                        </group>
+                        <group>
+                            <field name="description"/>
+                            <field name="document_ids" widget="many2many_binary"/>
+                        </group>
+                    </group>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_desktop_design_tree" model="ir.ui.view">
+        <field name="name">desktop.design.tree</field>
+        <field name="model">project_planning.desktop_design</field>
+        <field name="arch" type="xml">
+            <tree string="Desktop Designs">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

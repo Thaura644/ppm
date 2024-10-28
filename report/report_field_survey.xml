@@ -1,0 +1,69 @@
+<odoo>
+    <template id="field_survey_report">
+        <t t-call="web.external_layout">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                    <h2>Field Survey Report</h2>
+                    <h3>General Information</h3>
+                    <table class="table table-sm">
+                        <tr>
+                            <td><strong>Survey Title:</strong></td>
+                            <td><span t-field="doc.name"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Survey Date:</strong></td>
+                            <td><span t-field="doc.survey_date"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Done By:</strong></td>
+                            <td><span t-field="doc.done_by.name"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Site Name:</strong></td>
+                            <td><span t-field="doc.site_name"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Location:</strong></td>
+                            <td><span t-field="doc.location"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Description:</strong></td>
+                            <td><span t-field="doc.description"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Status:</strong></td>
+                            <td><span t-field="doc.status"/></td>
+                        </tr>
+                    </table>
+
+                    <!-- Survey Details Section -->
+                    <h3>Survey Details</h3>
+                    <table class="table table-sm">
+                        <tr>
+                            <td><strong>Type of Connection:</strong></td>
+                            <td><span t-field="doc.type_of_connection"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rack Required:</strong></td>
+                            <td><span t-field="doc.rack_required"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rack Size:</strong></td>
+                            <td><span t-field="doc.rack_size"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>288 Fiber Cabinets:</strong></td>
+                            <td><span t-field="doc.cabinet_288_fiber"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Splitter:</strong></td>
+                            <td><span t-field="doc.splitter"/></td>
+                        </tr>
+                    </table>
+                    <h3>Remarks</h3>
+                    <p t-field="doc.remarks"/>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

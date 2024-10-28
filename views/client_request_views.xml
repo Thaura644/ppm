@@ -1,0 +1,319 @@
+<odoo>
+  <record id="generate_report" model="ir.actions.act_window">
+        <field name="name">Generate Report</field>
+        <field name="res_model">project_planning.report</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_report_tree"/>
+    </record>
+    
+    <record id="view_client_request_form" model="ir.ui.view">
+        <field name="name">client.request.form</field>
+        <field name="model">project_planning.client_request</field>
+        <field name="arch" type="xml">
+            <form string="Client Request">
+                <header>
+                    <!-- Status Bar -->
+                    <div class="o_statusbar">
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="new,desktop_planning,acquisition,survey,desktop_design,wayleave_application,completed,cancelled"/>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="oe_button_box">
+                        <!-- Assign Planner -->
+                        <!--<button string="Assign Planner"
+                                type="object"
+                                name="assign_planner"
+                                class="btn-secondary"
+                                invisible="not show_assign_planner"/>-->
+
+                    <!-- Assign Planner Button with modifiers -->
+                    <button string="Assign Planner"
+                            type="object"
+                            name="assign_planner"
+                            class="btn-secondary"/>
+                    <!-- Replace 'attrs' with 'modifiers' as per Odoo 17 standards -->
+
+
+
+                               
+
+                        <!-- Start Desktop Planning -->
+                        <!--<button string="Start Desktop Planning"
+                                type="object"
+                                name="start_desktop_planning"
+                                class="btn-primary"
+                                invisible="not show_start_desktop_planning"/>-->
+
+                        <!-- Assign Acquisition Officer -->
+                        <button string="Assign Acquisition Officer"
+                                type="object"
+                                name="start_acquisition"
+                                class="btn-primary"
+                                invisible="not show_start_acquisition"/>
+
+                        <!-- Assign Surveyor -->
+                        <button string="Assign Surveyor"
+                                type="object"
+                                name="start_survey"
+                                class="btn-secondary"
+                                invisible="not show_assign_surveyor"/>
+
+                        <!-- BOQ Creation -->
+                        <button string="Create BOQ"
+                                type="object"
+                                name="create_boq"
+                                class="btn-primary"
+                                invisible="not show_create_boq"/>
+
+                        <!-- Assign Designer -->
+                        <button string="Assign Designer"
+                                type="object"
+                                name="assign_designer"
+                                class="btn-secondary"
+                                invisible="not show_assign_designer"/>
+
+                        <!-- Share Design and Quote -->
+                        <!--<button string="Share Design and Quote"
+                                type="object"
+                                name="share_design_and_quote"
+                                class="btn-secondary"
+                                invisible="not show_share_design_quote"/>-->
+
+                        <!-- Assign Wayleave Officer -->
+                        <button string="Assign Wayleave Officer"
+                                type="object"
+                                name="assign_wayleave_officer"
+                                class="btn-secondary"
+                                invisible="not show_assign_wayleave_officer"/>
+
+                        <!-- Permit Granted -->
+                        <!--<button string="Permit Granted"
+                                type="object"
+                                name="permit_granted"
+                                class="btn-success"
+                                invisible="not show_permit_granted"/>-->
+                    </div>
+                   <button type="object" name="generate_pdf_report" class="btn-primary" string="Generate PDF Report"/>
+<!-- <button type="object" name="generate_xlsx_report" class="btn-primary" string="Generate Excel Report"/>
+<button type="object" name="generate_csv_report" class="btn-primary" string="Generate CSV Report"/> -->
+
+                   <!-- <group>
+                    <field name="report_file" /> -->
+                    <!-- <field name="report_filename" /> Ensure this field is included -->
+                <!-- </group>
+                <div class="o_form_buttons_edit">
+                    <button type="object" class="btn-secondary" 
+                            name="action_download_report" 
+                            context="{'download_url': '/web/content?model=project_planning.client_request&amp;id=' + id + '&amp;field=report_file&amp;download=true&amp;filename=' + (report_filename or '')}">
+                            Download Report
+                    </button>
+                </div> -->
+                </header>
+
+                <!-- Include hidden fields for conditional visibility -->
+                <group>
+                    <field name="show_assign_planner" invisible="1"/>
+                    <field name="show_start_desktop_planning" invisible="1"/>
+                    <field name="show_start_acquisition" invisible="1"/>
+                    <field name="show_assign_surveyor" invisible="1"/>
+                    <field name="show_create_boq" invisible="1"/>
+                    <field name="show_assign_designer" invisible="1"/>
+                    <field name="show_share_design_quote" invisible="1"/>
+                    <field name="show_assign_wayleave_officer" invisible="1"/>
+                    <field name="show_permit_granted" invisible="1"/>
+                </group>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <sheet>
+                    <!-- Smart Buttons in a separate section below the action buttons -->
+                    <div class="oe_button_box">
+                        <button name="action_view_desktop_planning"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-folder-open">
+                            <field name="desktop_planning_count" widget="statinfo" string="Desktop Plannings"/>
+                        </button>
+
+                        <button name="action_view_acquisition"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-folder-open">
+                            <field name="acquisition_count" widget="statinfo" string="Acquisitions"/>
+                        </button>
+
+                        <button name="action_view_survey"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-folder-open">
+                            <field name="survey_count" widget="statinfo" string="Surveys"/>
+                        </button>
+
+                        <button name="action_view_desktop_design"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-folder-open">
+                            <field name="desktop_design_count" widget="statinfo" string="Desktop Designs"/>
+                        </button>
+
+                        <button name="action_view_wayleave_application"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-folder-open">
+                            <field name="wayleave_count" widget="statinfo" string="Wayleave Applications"/>
+                        </button>
+
+
+
+
+
+                <!--<button name="action_view_bid" type="object" class="oe_stat_button" icon="fa-briefcase">
+                    <field name="bid_count" widget="statinfo" string="Bid"/>
+                </button>-->
+
+                <!--<button name="action_view_sale_order" type="object" class="oe_stat_button" icon="fa-shopping-cart">
+                    <field name="sale_order_count" widget="statinfo" string="BOQ"/>
+                </button>-->
+
+
+
+
+
+
+
+                    </div>
+
+                    <!-- Main Form Content -->
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="client_id"/>
+                            <field name="request_date"/>
+                        </group>
+
+                        <group>
+                            <field name="project_id"/>
+                            <field name="acquisition_required"/>
+                            <field name="survey_required"/>
+                            <field name="surveyor_assigned"/>
+                            <field name="designer_assigned"/>
+                            <field name="design_approved"/>
+                            <field name="wayleave_required"/>
+                            <field name="permit_granted"/>
+                            <field name="crf_approved"/>
+                        </group>
+
+                        <group>
+                            <field name="email_from" string="Project email"/>
+                            <field name="planner_id"/>
+                            <field name="acquisition_officer_id" string="Acquisition Officer"/>
+                            <field name="surveyor_id" string="Surveyor"/>
+                            <field name="designer_id" string="Designer"/>
+                            <field name="wayleave_officer_id" string="Wayleave Officer"/>
+
+
+
+                            <field name="documents" widget="many2many_binary"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <field name="description"/>
+                    </group>
+
+                    <!-- Notebook with Pages -->
+                    <notebook>
+                        <page string="Desktop Plannings">
+                            <field name="desktop_planning_ids">
+                                <tree string="Desktop Plannings">
+                                    <field name="name"/>
+                                    <field name="status"/>
+                                    <field name="description"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page string="Acquisitions">
+                            <field name="acquisition_ids">
+                                <tree string="Acquisitions">
+                                    <field name="name"/>
+                                    <field name="status"/>
+                                    <field name="budget"/>
+                                    <field name="expenses"/>
+                                    <field name="balance"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page string="Field Surveys">
+                            <field name="field_survey_ids">
+                                <tree string="Field Surveys">
+                                    <field name="name"/>
+                                    <field name="status"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page string="Desktop Designs">
+                            <field name="desktop_design_ids">
+                                <tree string="Desktop Designs">
+                                    <field name="name"/>
+                                    <field name="status"/>
+                                    <field name="description"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                        <page string="Wayleave Applications">
+                            <field name="wayleave_application_ids">
+                                <tree string="Wayleave Applications">
+                                    <field name="name"/>
+                                    <field name="status"/>
+                                    <field name="application_date"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
+                    <!-- Chatter Widget -->
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_client_request_tree" model="ir.ui.view">
+        <field name="name">client.request.tree</field>
+        <field name="model">project_planning.client_request</field>
+        <field name="arch" type="xml">
+            <tree string="Client Requests">
+                <field name="name"/>
+                <field name="client_id"/>
+                <field name="request_date"/>
+                <field name="planner_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

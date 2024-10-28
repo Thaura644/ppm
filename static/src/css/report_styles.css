@@ -1,0 +1,137 @@
+/* General Page Styling */
+.page {
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    color: #333;
+    line-height: 1.6;
+    margin: 20px;
+}
+
+/* Header Styling */
+h2 {
+    color: #2C3E50;
+    font-size: 18px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #2C3E50;
+    padding-bottom: 5px;
+}
+
+h3 {
+    color: #34495E;
+    font-size: 16px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #BDC3C7;
+    padding-bottom: 3px;
+}
+
+/* Section Styling */
+.section-title {
+    font-weight: bold;
+    font-size: 14px;
+    color: #2980B9;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+table th {
+    background-color: #2980B9;
+    color: white;
+    text-align: left;
+    padding: 8px;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+table td {
+    border: 1px solid #BDC3C7;
+    padding: 8px;
+    font-size: 12px;
+    color: #2C3E50;
+}
+
+/* Table Rows (Zebra Stripe Effect) */
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Footer */
+.footer {
+    font-size: 10px;
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid #BDC3C7;
+    padding-top: 10px;
+    color: #7F8C8D;
+}
+
+/* Image and Attachments */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.attachment {
+    font-size: 12px;
+    color: #34495E;
+    margin-top: 10px;
+}
+
+/* Signature Block */
+.signature {
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: right;
+}
+
+/* Optional Styling for Specific Fields */
+.field-label {
+    font-weight: bold;
+    color: #34495E;
+    margin-bottom: 5px;
+}
+
+.field-value {
+    margin-bottom: 15px;
+}
+
+/* Aligning Data and Text Fields */
+.data-table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.data-table td {
+    padding: 5px 10px;
+}
+
+.data-table .field-label {
+    width: 30%;
+    vertical-align: top;
+}
+
+.data-table .field-value {
+    width: 70%;
+}
+
+/* Optional Notes and Highlights */
+.note {
+    font-style: italic;
+    color: #7F8C8D;
+}
+
+.highlight {
+    background-color: #FFF9C4;
+    padding: 3px;
+    border-radius: 3px;
+    font-weight: bold;
+    color: #2C3E50;
+}

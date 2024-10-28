@@ -1,0 +1,44 @@
+<odoo>
+    <record id="view_desktop_planning_form" model="ir.ui.view">
+        <field name="name">desktop.planning.form</field>
+        <field name="model">project_planning.desktop_planning</field>
+        <field name="arch" type="xml">
+            <form string="Desktop Planning">
+                <sheet>
+                    <header>
+                        <field name="status" widget="statusbar" statusbar_visible="draft,in_progress,reviewed,completed"/>
+                        <button string="In Progress" type="object" name="action_in_progress" class="btn-primary"/>
+                        <button string="Review" type="object" name="action_reviewed" class="btn-primary"/>
+                        <button string="Complete" type="object" name="action_completed" class="btn-success"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="project_id"/>
+                        </group>
+                        <group>
+                            <field name="description"/>
+                            <field name="document_ids" widget="many2many_binary"/>
+                        </group>
+                    </group>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_desktop_planning_tree" model="ir.ui.view">
+        <field name="name">desktop.planning.tree</field>
+        <field name="model">project_planning.desktop_planning</field>
+        <field name="arch" type="xml">
+            <tree string="Desktop Plannings">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,24 @@
+<odoo>
+    <!-- Search View for Client Requests -->
+    <record id="view_client_request_search" model="ir.ui.view">
+        <field name="name">client.request.search</field>
+        <field name="model">project_planning.client_request</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="state"/>
+                <field name="client_id"/>
+                <field name="request_date"/>
+                <field name="planner_id"/>
+                <filter string="New" name="state_new" domain="[('state', '=', 'new')]"/>
+                <filter string="Planning" name="state_planning" domain="[('state', '=', 'planning')]"/>
+                <filter string="Acquisition" name="state_acquisition" domain="[('state', '=', 'acquisition')]"/>
+                <group expand="1" string="Group By">
+                    <filter string="State" name="group_state" context="{'group_by':'state'}"/>
+                    <filter string="Client" name="group_client" context="{'group_by':'client_id'}"/>
+                    <filter string="Planner" name="group_planner" context="{'group_by':'planner_id'}"/>
+                    <filter string="Request Date" name="group_request_date" context="{'group_by':'request_date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>
