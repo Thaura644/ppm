@@ -10,7 +10,7 @@
     <menuitem id="menu_field_survey" name="Field Survey" parent="menu_project_planning_root" action="action_field_survey_tree" sequence="50"/>
     <menuitem id="menu_wayleave_application" name="Wayleave Application" parent="menu_project_planning_root" action="action_wayleave_application_tree" sequence="60"/>
     <!-- <menuitem id="menu_report" name="Reporting" parent="menu_project_planning_root" action="generate_report" sequence="70"/> -->
-    <menuitem id="menu_client_request_report" name="Client Request Report" parent="menu_report" action="client_request_report_action" sequence="10"/>
-<menuitem id="menu_field_survey_report" name="Field Survey Report" parent="menu_report" action="action_field_survey_report" sequence="20"/>
+    <!-- <menuitem id="menu_client_request_report" name="Client Request Report" parent="menu_report" action="client_request_report_action" sequence="10"/> -->
+<!-- <menuitem id="menu_field_survey_report" name="Field Survey Report" parent="menu_report" action="action_field_survey_report" sequence="20"/> -->
 
 </odoo>
