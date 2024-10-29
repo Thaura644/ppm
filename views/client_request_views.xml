@@ -1,10 +1,10 @@
 <odoo>
-  <record id="generate_report" model="ir.actions.act_window">
+  <!-- <record id="generate_report" model="ir.actions.act_window">
         <field name="name">Generate Report</field>
         <field name="res_model">project_planning.report</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="view_report_tree"/>
-    </record>
+    </record> -->
     
     <record id="view_client_request_form" model="ir.ui.view">
         <field name="name">client.request.form</field>
