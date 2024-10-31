@@ -26,13 +26,14 @@
 
 
         'views/search_views.xml',  # Search views can come after all main views
-        'views/action_views.xml',  # Load actions after the views they reference
+          # Load actions after the views they reference
         'report/report_action.xml',
 
         
         'report/client_request_report.xml',
         'report/report_field_survey.xml',
         'views/report_views.xml',
+        'views/action_views.xml',
         'views/menu_views.xml'  # Load menus last, after actions are defined
     ],
     'installable': True,

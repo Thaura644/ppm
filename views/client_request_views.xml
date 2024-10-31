@@ -1,10 +1,4 @@
 <odoo>
-  <!-- <record id="generate_report" model="ir.actions.act_window">
-        <field name="name">Generate Report</field>
-        <field name="res_model">project_planning.report</field>
-        <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="view_report_tree"/>
-    </record> -->
     
     <record id="view_client_request_form" model="ir.ui.view">
         <field name="name">client.request.form</field>
@@ -94,21 +88,7 @@
                                 class="btn-success"
                                 invisible="not show_permit_granted"/>-->
                     </div>
-                   <button type="object" name="generate_pdf_report" class="btn-primary" string="Generate PDF Report"/>
-<!-- <button type="object" name="generate_xlsx_report" class="btn-primary" string="Generate Excel Report"/>
-<button type="object" name="generate_csv_report" class="btn-primary" string="Generate CSV Report"/> -->
-
-                   <!-- <group>
-                    <field name="report_file" /> -->
-                    <!-- <field name="report_filename" /> Ensure this field is included -->
-                <!-- </group>
-                <div class="o_form_buttons_edit">
-                    <button type="object" class="btn-secondary" 
-                            name="action_download_report" 
-                            context="{'download_url': '/web/content?model=project_planning.client_request&amp;id=' + id + '&amp;field=report_file&amp;download=true&amp;filename=' + (report_filename or '')}">
-                            Download Report
-                    </button>
-                </div> -->
+                   
                 </header>
 
                 <!-- Include hidden fields for conditional visibility -->

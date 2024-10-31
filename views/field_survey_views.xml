@@ -13,20 +13,6 @@
                                 class="btn-primary" invisible="status != 'pending'"/>
                         <button string="Complete" type="object" name="action_completed"
                                 class="btn-success" invisible="status != 'in_progress'"/>
-                        <button string="Generate PDF Report" type="object" name="generate_pdf_report" class="btn-primary"/>
-                        <!-- <button string="Preview PDF Report" type="object" name="action_preview_pdf_report" class="btn-secondary"/>
-                        <button string="Download Report" type="object" name="action_download_report" class="btn-success"/> -->
-                        <!-- <group> -->
-                    <!-- <field name="report_file" /> -->
-                    <!-- <field name="report_filename" /> Ensure this field is included -->
-                <!-- </group>
-                <div class="o_form_buttons_edit">
-                    <button type="button" class="btn-secondary" 
-                            name="action_download_report" 
-                            context="{'download_url': '/web/content?model=project_planning.client_request&amp;id=' + str(id) + '&amp;field=report_file&amp;download=true&amp;filename=' + str(report_filename)}">
-                        Download Report
-                    </button>
-                </div> -->
                     </header>
 
                     <!-- Subtabs (Notebook) -->  

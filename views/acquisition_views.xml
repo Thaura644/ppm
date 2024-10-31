@@ -12,19 +12,6 @@
                         <button string="Documentation" type="object" name="action_documentation" class="btn-primary"/>
                         <button string="Complete" type="object" name="action_completed" class="btn-success"/>
                          
-                        <button string="Generate Report" type="object" name="generate_report" class="btn-secondary"/>
-                        <group>
-                    <field name="report_file" />
-                    <field name="report_filename" /> <!-- Ensure this field is included -->
-                </group>
-                <div class="o_form_buttons_edit">
-                    <button type="button" class="btn-secondary" 
-                            name="action_download_report" 
-                            context="{'download_url': '/web/content?model=project_planning.client_request&amp;id=' + str(id) + '&amp;field=report_file&amp;download=true&amp;filename=' + str(report_filename)}">
-                        Download Report
-                    </button>
-                </div>
-                    
                     </header>
                     <group>
                         <group>
